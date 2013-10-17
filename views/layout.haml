@@ -8,9 +8,9 @@
       %meta{:name => 'keywords', :content => @keywords}
     %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}
     %meta{:content => '', :name => 'author'}/
-    %link{:href => '//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css', :media => 'screen', :rel => 'stylesheet'}
-    %link{:href => '/css/master.css', :media => 'screen', :rel => 'stylesheet'}
-    / %link{:href => '/bootstrap/bootstrap-responsive.css', :media => 'screen', :rel => 'stylesheet'}
+    %link{:href => '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', :media => 'screen', :rel => 'stylesheet'}
+    -#%link{:href => '/css/master.css', :media => 'screen', :rel => 'stylesheet'}
+    -#%link{:href => '/bootstrap/bootstrap-responsive.css', :media => 'screen', :rel => 'stylesheet'}
     /[if lte IE 6]
       %link{:rel => 'stylesheet', :href => 'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media =>'screen, projection'}
     /[if lt IE 9]
@@ -30,7 +30,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} 
+          %a.brand{:href => "#"}
             = Nesta::Config.title
           .nav-collapse
             %ul.nav
