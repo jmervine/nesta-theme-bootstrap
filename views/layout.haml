@@ -1,5 +1,4 @@
 !!!
-- bootstrap = Nesta::Config.bootstrap rescue "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
 %html{:lang=>'en'}
   %head
     %meta{:charset=>'utf-8'}
@@ -9,7 +8,7 @@
       %meta{:name=>'keywords', :content=>@keywords}
     %meta{:content=>'width=device-width, initial-scale=1.0', :name=>'viewport'}
     %meta{:content=>'', :name=>'author'}/
-    %link{:href=>bootstrap, :rel=>"stylesheet", :media=>"screen"}
+    %link{:href=>Nesta::Config.bootstrap, :rel=>"stylesheet", :media=>"screen"}
     %link{:href=>'/bootstrap/master.css', :media=>'screen', :rel=>'stylesheet'}
     /[if lte IE 6]
       %link{:rel=>'stylesheet', :href=>'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media=>'screen, projection'}
@@ -24,21 +23,15 @@
     %title= @title
   %body
     .container
-      .navbar.navbar-default
-        .navbar-header
-          %button.navbar-toggle{:type=>"button", "data-toggle"=>"collapse", "data-target"=>".navbar-collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
+      = haml :header, :layout=>false
 
-          %a.navbar-brand(href="/")= Nesta::Config.title
-
-        .navbar-collapse.collapse
-          - display_menu(@menu_items, :class=>'nav navbar-nav')
-
-          %form.navbar-form.navbar-right{:role=>"search",:action=>"/search",:method=>"GET"}
-            .form-group
-              %input.form-control{:type=>"text",:name=>"q",:placeholder=>"search"}
+      .container
+        .page-header{:style=>"margin-top: 0px !important;"}
+          - if Nesta::Config.gravatar
+            %img{:src=>Nesta::Config.gravatar, :style=>"padding:5px 15px 15px; float:left"}
+          %a{:href=>"/"}>
+            %h1= Nesta::Config.title
+          %small= Nesta::Config.subtitle
 
       .container
         .col-sm-12.col-md-9
@@ -50,6 +43,10 @@
       %center
         %br
         = haml :footer, :layout=>false
+
+    - if Nesta::Config.sharethis
+      %script{:type=>"text/javascript", :src=>"http://w.sharethis.com/button/buttons.js"}
+      %script{:type=>"text/javascript"}="stLight.options({publisher: #{Nesta::Config.sharethis}, doNotHash: false, doNotCopy: false, hashAddressBar: false});"
 
     %script{:src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %script{:src=>"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", :async=>true, :type=>"text/javascript"}

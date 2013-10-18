@@ -1,27 +1,23 @@
 .sidebar-nav
-  - if Nesta::Config.sharethis
-    .well
-      %script{:type=>"text/javascript", :src=>"http://w.sharethis.com/button/buttons.js"}
-      %script{:type=>"text/javascript"}="stLight.options({publisher: #{Nesta::Config.sharethis}, doNotHash: false, doNotCopy: false, hashAddressBar: false});"
-      = sharethis_buttons
+  - if Nesta::Config.sharethis || Nesta::Config.twitter
+    %center.well
+      - if Nesta::Config.sharethis
+        = sharethis_buttons
       - if Nesta::Config.twitter
         %span.st_twitterfollow_large{:displayText=>'Twitter Follow', :st_username=>Nesta::Config.twitter}
 
   - unless @page.pages.empty? || @page.flagged_as?('landing_page');
-    .well
-      %h4 More on This
+    .list-group
+      %a.list-group-item.active{:href=>"#"}
+        %h4.list-group-item-heading More on This
       - @page.pages.each do |page|
-        %a{ :href => page.abspath }=page.title
-        %br
+        %a.list-group-item{:href=>page.abspath}= page.title
 
-  %h4
-    %a{:href=>"http://joshua.mervine.net/"} Joshua P. Mervine
-  %ul.list-group
-    %li.list-group-item
-      %a{:href=>"http://twitter.com/mervinej"} Twitter
-    %li.list-group-item
-      %a{:href=>"http://linkedin.com/in/mervinej"} LinkedIn
-    %li.list-group-item
-      %a{:href=>"http://github.com/jmervine"} Github
-    %li.list-group-item
-      %a{:href=>"https://www.gittip.com/jmervine/"} Gittip
+  .list-group
+    %a.list-group-item.active{:href=>Nesta::Config.author['uri']}>
+      %h4.list-group-item-heading= Nesta::Config.author['name']
+    - Nesta::SOCIAL.keys.each do |name|
+      - value = Nesta::Config.send(name.to_sym)
+      - if value
+        %a.list-group-item{:href=>Nesta::SOCIAL[name]+value}= name.capitalize
+

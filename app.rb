@@ -4,14 +4,30 @@ require 'ferret'
 require 'net/http'
 
 module Nesta
+  SOCIAL = {
+    "twitter" => "http://twitter.com/",
+    "linkedin" => "http://linkedin.com/in/",
+    "github" => "http://github.com/",
+    "gittip" => "http://www.gittip.com/"
+  }
   class Config
     @settings += %w[ exclude_from_search ]
     def self.exclude_from_search
       from_yaml("exclude_from_search") || [ "/", "/search" ]
     end
-    @settings += %w[ twitter ]
-    def self.twitter
-      from_yaml("twitter") || false
+    SOCIAL.keys.each do |social|
+      @settings += [ social ]
+      self.send(:define_method, social.to_sym) do
+        from_yaml(social) || false
+      end
+    end
+
+    def self.bootstrap
+      from_yaml("bootstrap") || "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    end
+
+    def self.gravatar
+      from_yaml("gravatar") || false
     end
   end
 
