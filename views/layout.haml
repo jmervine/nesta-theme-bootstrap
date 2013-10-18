@@ -1,52 +1,61 @@
 !!!
-%html{:lang => 'en'}
+- bootstrap = Nesta::Config.bootstrap rescue "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+%html{:lang=>'en'}
   %head
-    %meta{:charset => 'utf-8'}
+    %meta{:charset=>'utf-8'}
     - if @description
-      %meta{:name => 'description', :content => @description}
+      %meta{:name=>'description', :content=>@description}
     - if @keywords
-      %meta{:name => 'keywords', :content => @keywords}
-    %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}
-    %meta{:content => '', :name => 'author'}/
-    %link{:href => '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', :media => 'screen', :rel => 'stylesheet'}
-    -#%link{:href => '/css/master.css', :media => 'screen', :rel => 'stylesheet'}
-    -#%link{:href => '/bootstrap/bootstrap-responsive.css', :media => 'screen', :rel => 'stylesheet'}
+      %meta{:name=>'keywords', :content=>@keywords}
+    %meta{:content=>'width=device-width, initial-scale=1.0', :name=>'viewport'}
+    %meta{:content=>'', :name=>'author'}/
+    %link{:href=>bootstrap, :rel=>"stylesheet", :media=>"screen"}
+    %link{:href=>'/bootstrap/master.css', :media=>'screen', :rel=>'stylesheet'}
     /[if lte IE 6]
-      %link{:rel => 'stylesheet', :href => 'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media =>'screen, projection'}
+      %link{:rel=>'stylesheet', :href=>'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media=>'screen, projection'}
     /[if lt IE 9]
-      %script{:src => '//html5shim.googlecode.com/svn/trunk/html5.js'}
-    %link{:href => '/articles.xml', :rel => 'alternate', :type => 'application/atom+xml'}
-    %link{:href => "/bootstrap/favicon.ico", :rel => "shortcut icon"}
-    %link{:href => "/bootstrap/images/apple-touch-icon.png", :rel => "apple-touch-icon"}
-    %link{:href => "/bootstrap/images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}
-    %link{:href => "/bootstrap/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+      %script{:src=>'//html5shim.googlecode.com/svn/trunk/html5.js'}
+    %link{:href=>'/articles.xml', :rel=>'alternate', :type=>'application/atom+xml'}
+    %link{:href=>"/bootstrap/favicon.ico", :rel=>"shortcut icon"}
+    %link{:href=>"/bootstrap/images/apple-touch-icon.png", :rel=>"apple-touch-icon"}
+    %link{:href=>"/bootstrap/images/apple-touch-icon-72x72.png", :rel=>"apple-touch-icon", :sizes=>"72x72"}
+    %link{:href=>"/bootstrap/images/apple-touch-icon-114x114.png", :rel=>"apple-touch-icon", :sizes=>"114x114"}/
 
     %title= @title
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        %div{:class => container}
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+    .container
+      .navbar.navbar-default
+        .navbar-header
+          %button.navbar-toggle{:type=>"button", "data-toggle"=>"collapse", "data-target"=>".navbar-collapse"}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"}
-            = Nesta::Config.title
-          .nav-collapse
-            %ul.nav
-              %li.active
-                %a{:href => "#"} Home
-              %li
-                %a{:href => "#about"} About
-              %li
-                %a{:href => "#contact"} Contact
-            %p.navbar-text.pull-right
-              Logged in as
-              %a{:href => "#"} username
 
-    %div{:class => container}
-      = yield
-      %footer
-        = haml :footer, :layout => false
-    .analytics
-      = haml :analytics, :layout => false
+          %a.navbar-brand(href="/")= Nesta::Config.title
+
+        .navbar-collapse.collapse
+          - display_menu(@menu_items, :class=>'nav navbar-nav')
+
+          %form.navbar-form.navbar-right{:role=>"search",:action=>"/search",:method=>"GET"}
+            .form-group
+              %input.form-control{:type=>"text",:name=>"q",:placeholder=>"search"}
+
+      .container
+        .col-sm-12.col-md-9
+          = yield
+
+        .col-md-3.visible-md.visible-lg
+          = haml :sidebar, :layout=>false
+
+      %center
+        %br
+        = haml :footer, :layout=>false
+
+    %script{:src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    %script{:src=>"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", :async=>true, :type=>"text/javascript"}
+    %script
+      :plain
+        var searchElement = 'input[name=q]';
+    %script{:src=>"//cdn.jsdelivr.net/jquery.webpage-vim/0.1/vim.min.js", :async=>true, :type=>"text/javascript"}
+
+    = haml :analytics, :layout=>false
