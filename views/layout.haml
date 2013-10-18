@@ -55,4 +55,13 @@
         var searchElement = 'input[name=q]';
     %script{:src=>"//cdn.jsdelivr.net/jquery.webpage-vim/0.1/vim.min.js", :async=>true, :type=>"text/javascript"}
 
+    %script
+      :plain
+        $(window).load(function() {
+          $('ul.nav.navbar-nav:not(.navbar-right) li a').each(function() {
+            if (top.location.href === $(this).prop('href')) {
+              $(this).parent().addClass('active');
+            }
+          });
+        });
     = haml :analytics, :layout=>false
