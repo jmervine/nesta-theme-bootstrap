@@ -1,5 +1,25 @@
 body {
-  padding: 50px;
+  padding-top: 50px;
+}
+
+@media (max-width: 767px) {
+  .page_content.container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .page_content.well {
+    width: 800px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+pre.twilight {
+  overflow-x: auto !important;
+  word-wrap: normal !important;
+  white-space: pre !important;
 }
 
 hr.article_seperator {

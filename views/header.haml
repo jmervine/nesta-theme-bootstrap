@@ -14,7 +14,7 @@
       .form-group
         %input.form-control{:type=>"text",:name=>"q",:placeholder=>"search"}
 
-    %ul.nav.navbar-nav.navbar-right.hidden-lg.hidden-md
+    %ul.nav.navbar-nav.navbar-right.visible-xs
       - Nesta::SOCIAL.keys.each do |name|
         - value = Nesta::Config.send(name.to_sym)
         - if value
