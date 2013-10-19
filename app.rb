@@ -71,6 +71,10 @@ module Nesta
           return "<pre>#{body}</pre>"
         end
       end
+
+      def active?(item)
+        return request.path_info == item.abspath
+      end
     end
 
     # Add new routes here.

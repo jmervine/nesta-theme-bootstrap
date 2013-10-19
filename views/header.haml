@@ -8,7 +8,10 @@
     %a.navbar-brand{:href=>"/"} Home
 
   .navbar-collapse.collapse
-    - display_menu(@menu_items, :class=>'nav navbar-nav')
+    %ul.nav.navbar-nav
+      - Nesta::Menu.top_level.each do |item|
+        %li{:class=>(active?(item)?'active':'')}
+          %a{:href=>item.abspath}= item.title.split(' - ').first
 
     %form.navbar-form.navbar-right{:role=>"search",:action=>"/search",:method=>"GET"}
       .form-group
