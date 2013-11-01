@@ -29,6 +29,10 @@ module Nesta
     def self.gravatar
       from_yaml("gravatar") || false
     end
+
+    def self.cdn
+      from_yaml("cdn_host") || ''
+    end
   end
 
   class App
@@ -74,6 +78,10 @@ module Nesta
 
       def active?(item)
         return request.path_info == item.abspath
+      end
+
+      def asset path
+        return Nesta::Config.cdn + path
       end
     end
 

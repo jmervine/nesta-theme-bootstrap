@@ -9,16 +9,16 @@
     %meta{:content=>'width=device-width, initial-scale=1.0', :name=>'viewport'}
     %meta{:content=>'', :name=>'author'}/
     %link{:href=>Nesta::Config.bootstrap, :rel=>"stylesheet", :media=>"screen"}
-    %link{:href=>'/bootstrap/master.css', :media=>'screen', :rel=>'stylesheet'}
+    %link{:href=>asset('/bootstrap/master.css'), :media=>'screen', :rel=>'stylesheet'}
     /[if lte IE 6]
       %link{:rel=>'stylesheet', :href=>'http://universal-ie6-css.googlecode.com/files/ie6.1.1.css', :media=>'screen, projection'}
     /[if lt IE 9]
       %script{:src=>'//html5shim.googlecode.com/svn/trunk/html5.js'}
     %link{:href=>'/articles.xml', :rel=>'alternate', :type=>'application/atom+xml'}
-    %link{:href=>"/bootstrap/favicon.ico", :rel=>"shortcut icon"}
-    %link{:href=>"/bootstrap/images/apple-touch-icon.png", :rel=>"apple-touch-icon"}
-    %link{:href=>"/bootstrap/images/apple-touch-icon-72x72.png", :rel=>"apple-touch-icon", :sizes=>"72x72"}
-    %link{:href=>"/bootstrap/images/apple-touch-icon-114x114.png", :rel=>"apple-touch-icon", :sizes=>"114x114"}/
+    %link{:href=>asset('/bootstrap/favicon.ico'), :rel=>'shortcut icon'}
+    %link{:href=>asset('/bootstrap/images/apple-touch-icon.png'), :rel=>'apple-touch-icon'}
+    %link{:href=>asset('/bootstrap/images/apple-touch-icon-72x72.png'), :rel=>'apple-touch-icon', :sizes=>'72x72'}
+    %link{:href=>asset('/bootstrap/images/apple-touch-icon-114x114.png'), :rel=>'apple-touch-icon', :sizes=>'114x114'}/
 
     %title= @title
   %body
