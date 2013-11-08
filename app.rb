@@ -33,6 +33,10 @@ module Nesta
     def self.cdn
       from_yaml("cdn_host") || ''
     end
+
+    def self.domain
+      from_yaml("domain") || ''
+    end
   end
 
   class App
@@ -64,7 +68,7 @@ module Nesta
       end
 
       def gitmd path
-        uri  = URI.parse("https://raw.github.com/jmervine/"+path);
+        uri = (path.start_with?("https://") ? URI.parse(path) : URI.parse("https://raw.github.com/jmervine/"+path))
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
         body = http.request(Net::HTTP::Get.new(uri.request_uri)).body

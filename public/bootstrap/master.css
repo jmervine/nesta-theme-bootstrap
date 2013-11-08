@@ -2,6 +2,11 @@ body {
   padding-top: 50px;
 }
 
+code {
+  background-color: #141414;
+  color: #F8F8F8;
+}
+
 @media (max-width: 767px) {
   .page_content.container {
     margin-left: 0px !important;

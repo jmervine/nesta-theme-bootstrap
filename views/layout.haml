@@ -29,7 +29,7 @@
         .page-header{:style=>"margin-top: 0px !important;"}
           - if Nesta::Config.gravatar
             %img{:src=>Nesta::Config.gravatar, :style=>"padding:5px 15px 15px; float:left"}
-          %a{:href=>"/"}>
+          %a{:href=>"#{Nesta::Config.domain}/"}>
             %h1= Nesta::Config.title
           %small= Nesta::Config.subtitle
 
