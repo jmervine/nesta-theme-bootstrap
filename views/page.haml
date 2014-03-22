@@ -1,11 +1,9 @@
 .page_content.container
   .page_content
     - if readme_path = @page.metadata('readme')
-      .well
-        = gitmd readme_path
+      = gitmd readme_path
     - else
-      .well
-        ~ @page.to_html(self)
+      ~ @page.to_html(self)
 
     - if @page.flagged_as?('landing_page');
       = article_summaries(@page.pages)
