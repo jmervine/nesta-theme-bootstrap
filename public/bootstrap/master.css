@@ -171,3 +171,10 @@ pre.twilight .Comment {
   color: #5F5A60;
   font-style: italic; }
 
+.share-buttons{
+    list-style: none;
+}
+
+.share-buttons li{
+    display: inline;
+}

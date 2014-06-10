@@ -44,9 +44,9 @@
         %br
         = haml :footer, :layout=>false
 
-    - if Nesta::Config.sharethis
-      %script{:type=>"text/javascript", :src=>"http://w.sharethis.com/button/buttons.js"}
-      %script{:type=>"text/javascript"}="stLight.options({publisher: #{Nesta::Config.sharethis}, doNotHash: false, doNotCopy: false, hashAddressBar: false});"
+    -#- if Nesta::Config.sharethis
+      -#%script{:type=>"text/javascript", :src=>"http://w.sharethis.com/button/buttons.js"}
+      -#%script{:type=>"text/javascript"}="stLight.options({publisher: #{Nesta::Config.sharethis}, doNotHash: false, doNotCopy: false, hashAddressBar: false});"
 
     %script{:src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %script{:src=>"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", :async=>true, :type=>"text/javascript"}
