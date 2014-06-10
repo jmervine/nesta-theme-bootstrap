@@ -2,19 +2,19 @@
   %ul.share-buttons
     %li
       %a{href: "https://www.facebook.com/sharer/sharer.php?u=#{Nesta::Config.domain+request.path}", target: "_blank"}
-        %img{src: "images/simple_icons/Facebook.png"}/
+        %img{src: asset("/bootstrap/images/simple_icons/Facebook.png")}/
     %li
       %a{href: "https://twitter.com/intent/tweet?url=#{Nesta::Config.domain+request.path}&text=#{@title}%20-%20&via=#{Nesta::Config.twitter}", target: "_blank", title: "Tweet"}
-        %img{src: "images/simple_icons/Twitter.png"}/
+        %img{src: asset("/bootstrap/images/simple_icons/Twitter.png")}/
     %li
       %a{href: "https://plus.google.com/share?url=#{Nesta::Config.domain+request.path}", target: "_blank", title: "Share on Google+"}
-        %img{src: "images/simple_icons/Google.png"}/
+        %img{src: asset("/bootstrap/images/simple_icons/Google.png")}/
     %li
       %a{href: "http://www.reddit.com/submit?url=#{Nesta::Config.domain+request.path}&title=#{@title}", target: "_blank", title: "Submit to Reddit"}
-        %img{src: "images/simple_icons/Reddit.png"}/
+        %img{src: asset("/bootstrap/images/simple_icons/Reddit.png")}/
     %li
       %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=#{Nesta::Config.domain+request.path}&title=#{@title}&source=http://#{request.host}#{request.path}", target: "_blank", title: "Share on LinkedIn"}
-        %img{src: "images/simple_icons/LinkedIn.png"}/
+        %img{src: asset("/bootstrap/images/simple_icons/LinkedIn.png")}/
 
   -#- if Nesta::Config.sharethis || Nesta::Config.twitter
     -#%center.well
