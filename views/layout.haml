@@ -29,7 +29,7 @@
         .page-header{:style=>"margin-top: 0px !important;"}
           - if Nesta::Config.gravatar
             %img{:src=>Nesta::Config.gravatar, :style=>"padding:5px 15px 15px; float:left"}
-          %a{:href=>"#{Nesta::Config.domain}/"}>
+          %a{:href=>"/"}>
             %h1= Nesta::Config.title
           %small= Nesta::Config.subtitle
 
@@ -49,7 +49,7 @@
       -#%script{:type=>"text/javascript"}="stLight.options({publisher: #{Nesta::Config.sharethis}, doNotHash: false, doNotCopy: false, hashAddressBar: false});"
 
     %script{:src=>"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
-    %script{:src=>"//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", :async=>true, :type=>"text/javascript"}
+    %script{:src=>"//maxcdn.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", :async=>true, :type=>"text/javascript"}
     %script
       :plain
         var searchElement = 'input[name=q]';

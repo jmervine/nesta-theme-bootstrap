@@ -23,7 +23,7 @@ module Nesta
     end
 
     def self.bootstrap
-      from_yaml("bootstrap") || "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      from_yaml("bootstrap") || "//maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
     end
 
     def self.gravatar
