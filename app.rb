@@ -1,6 +1,6 @@
 # Use the app.rb file to load Ruby code, modify or extend the models, or
 # do whatever else you fancy when the theme is loaded.
-require 'ferret'
+#require 'ferret'
 require 'net/http'
 
 module Nesta
